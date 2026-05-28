@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Jahnavi ✨</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- CUSTOM SPARK CURSOR -->
+  <canvas id="sparkCanvas"></canvas>
+
+  <!-- BACKGROUND STARS -->
+  <canvas id="starsCanvas"></canvas>
+
+  <!-- FLOATING EMOJIS -->
+  <div id="floatingEmojis"></div>
+
+  <!-- MUSIC BUTTON -->
+  <button class="music-btn" id="musicBtn" title="Toggle Music">
+    <span id="musicIcon">🎵</span>
+  </button>
+
+  <!-- ══════════════════════════════════════
+       PAGE 1 — UNLOCK
+  ══════════════════════════════════════ -->
+  <div id="unlockPage" class="page active">
+    <canvas id="unlockParticles"></canvas>
+
+    <!-- Animated rings behind card -->
+    <div class="unlock-ring r1"></div>
+    <div class="unlock-ring r2"></div>
+    <div class="unlock-ring r3"></div>
+
+    <div class="unlock-card">
+      <div class="unlock-orb"></div>
+
+      <div class="unlock-logo">
+        <span class="ul-heart">🩶</span>
+        <span class="ul-spark a">✨</span>
+       
+      </div>
+
+      <h1 class="unlock-title">Secret Key</h1>
+      <p class="unlock-hint">Hint: your phone number only ✨</p>
+
+      <div class="input-wrap" id="inputWrap">
+        <input
+          type="password"
+          id="keyInput"
+          class="key-input"
+          placeholder="Enter key..."
+          autocomplete="off"
+          maxlength="20"
+        />
+        <!-- Eye toggle -->
+        <button class="eye-btn" id="eyeBtn" tabindex="-1" title="Show/Hide">
+          <svg id="eyeOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <svg id="eyeClosed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </button>
+        <div class="input-glow-line"></div>
+      </div>
+
+      <p class="unlock-error" id="unlockError">Wrong key. Try again 💔</p>
+
+      <button class="unlock-btn" id="unlockBtn">
+        <span class="ub-text">Unlock ✨</span>
+        <div class="ub-shine"></div>
+      </button>
+
+      <p class="unlock-footer">Made with 🩶 for someone very special</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       PAGE 2 — MAIN BIRTHDAY
+  ══════════════════════════════════════ -->
+  <div id="mainPage" class="page">
+
+    <!-- HERO BANNER (top) -->
+    <div class="hero-banner">
+      <div class="hero-bg-glow g1"></div>
+      <div class="hero-bg-glow g2"></div>
+      <div class="hero-bg-glow g3"></div>
+
+      <!-- Left: Terminal -->
+      <div class="terminal-col">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <span class="tdot red"></span>
+            <span class="tdot yellow"></span>
+            <span class="tdot green"></span>
+            <span class="tlabel">birthday.js</span>
+            <span class="tlabel-right">✨ running</span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <span class="term-cursor" id="termCursor">▌</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Heart + Main Content -->
+      <div class="center-col">
+        <canvas id="heartCanvas"></canvas>
+
+        <div class="center-content">
+          <div class="cc-greeting">🩶 With Love</div>
+          <h1 class="cc-title">Happy Birthday</h1>
+          <h2 class="cc-name">Jaanu <span class="cc-sparkle">✨</span></h2>
+          <p class="cc-dob">
+            <span class="dob-label">Born</span>
+            <span class="dob-val">28 · 05 · 2005</span>
+          </p>
+
+          <!-- DAYS ALIVE COUNTER -->
+          <div class="days-alive-wrap">
+            <div class="da-number" id="daysAlive">0</div>
+            <div class="da-label">days of being amazing 🌟</div>
+          </div>
+
+          <!-- COUNTDOWN GRID -->
+          <div class="countdown-section">
+            <div class="cs-label">⏱ Age Live Counter</div>
+            <div class="countdown-grid">
+              <div class="cd-item">
+                <div class="cd-num" id="cdYears">00</div>
+                <div class="cd-unit">Yrs</div>
+              </div>
+              <div class="cd-sep">:</div>
+              <div class="cd-item">
+                <div class="cd-num" id="cdMonths">00</div>
+                <div class="cd-unit">Mo</div>
+              </div>
+              <div class="cd-sep">:</div>
+              <div class="cd-item">
+                <div class="cd-num" id="cdDays">00</div>
+                <div class="cd-unit">Days</div>
+              </div>
+              <div class="cd-sep">:</div>
+              <div class="cd-item">
+                <div class="cd-num" id="cdHours">00</div>
+                <div class="cd-unit">Hrs</div>
+              </div>
+              <div class="cd-sep">:</div>
+              <div class="cd-item">
+                <div class="cd-num" id="cdMins">00</div>
+                <div class="cd-unit">Min</div>
+              </div>
+              <div class="cd-sep">:</div>
+              <div class="cd-item">
+                <div class="cd-num" id="cdSecs">00</div>
+                <div class="cd-unit">Sec</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="cc-msg">
+            You are one of the most special persons in my life ✨<br/>
+            Forever friend 🩶 · Stay daring, Smiling 😊 and Happy always ✨
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Info cards -->
+      <div class="right-col">
+        <div class="r-card identity-card">
+          <div class="ic-avatar">J</div>
+          <div class="ic-name">Jahnavi Yarramsetti</div>
+          <div class="ic-role">My Favourite Junior 🩶</div>
+          <div class="ic-tags">
+            <span class="ictag">Daring</span>
+            <span class="ictag">Extrovert</span>
+            <span class="ictag">Radiant</span>
+            <span class="ictag">Forever ✨</span>
+          </div>
+        </div>
+
+        <div class="r-card quote-card">
+          <div class="qc-mark">"</div>
+          <p class="qc-text">May every dream you chase light up the sky the way you light up every room you walk into 🩶</p>
+          <div class="qc-from">— Veera ✨</div>
+        </div>
+
+        <div class="r-card stats-card">
+          <div class="sc-row">
+            <span class="sc-emoji">✨</span>
+            <span class="sc-text">Smiles Shared</span>
+            <span class="sc-val">∞</span>
+          </div>
+          <div class="sc-row">
+            <span class="sc-emoji">🩶</span>
+            <span class="sc-text">Friendship Level</span>
+            <span class="sc-val">MAX</span>
+          </div>
+          <div class="sc-row">
+            <span class="sc-emoji">💫</span>
+            <span class="sc-text">Memories Made</span>
+            <span class="sc-val">∞</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPECIAL POPUP -->
+    <div class="special-overlay" id="specialOverlay">
+      <div class="spc-countdown" id="spcCountdown">
+        <svg class="spc-ring" viewBox="0 0 110 110">
+          <circle cx="55" cy="55" r="48" class="sr-bg"/>
+          <circle cx="55" cy="55" r="48" class="sr-prog" id="spcRing"/>
+        </svg>
+        <div class="spc-num" id="spcNum">20</div>
+        <div class="spc-hint">unlocking…</div>
+      </div>
+      <button class="spc-btn hidden" id="specialBtn">
+        <span>🎬 Click for Small Video ✨</span>
+        <div class="spc-pulse"></div>
+      </button>
+    </div>
+
+  </div><!-- /mainPage -->
+
+  <!-- ══════════════════════════════════════
+       VIDEO MODAL
+  ══════════════════════════════════════ -->
+  <div id="videoModal" class="video-modal">
+    <div class="vm-backdrop"></div>
+    <div class="vm-box">
+      <div class="vm-header">
+        <div class="vm-title-wrap">
+          <span class="vm-heart">🩶</span>
+          <span class="vm-title">Happy Birthday Jahnavi ✨</span>
+        </div>
+        <div class="vm-btns">
+          <a href="birthday-video.mp4" id="downloadBtn" class="vm-btn dl-btn" download>⬇ Download</a>
+          <button class="vm-btn back-btn" id="backBtn">⬅ Back</button>
+        </div>
+      </div>
+      <div class="vm-video-wrap">
+        <video id="birthdayVideo" controls loop playsinline>
+          <source src="birthday-video.mp4" type="video/mp4"/>
+        </video>
+        <div class="vm-placeholder" id="vmPlaceholder" style="display:none">
+          <div class="vmp-icon">🎬</div>
+          <p>Add <code>birthday-video.mp4</code> to the project folder ✨</p>
+        </div>
+      </div>
+      <div class="vm-controls">
+        <button class="vm-play-btn" id="vmPlayBtn">▶ Play</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BG MUSIC -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="birthday-music.mp3" type="audio/mpeg"/>
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
